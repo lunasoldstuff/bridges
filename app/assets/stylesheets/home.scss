@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Quando|Judson|Montserrat:500|Roboto:400,500');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,600|Roboto:400,500');
 
 $white:    #fff    !default; // color5
 $lightest: #d9e1e8 !default; // color2
@@ -73,6 +73,7 @@ body {
   max-width: 600px;
   margin: 0 auto;
   padding: 30px 10px;
+  overflow-x: hidden;
 }
 
 a {
@@ -226,6 +227,8 @@ h4 {
   margin-bottom: 30px;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lighten($darkest, 12%);
 
   ul {
     list-style: none;
@@ -246,7 +249,7 @@ h4 {
       line-height: 32px;
       transition: color $transition-out;
       font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 14px;
 
       img.link-logo {
@@ -306,21 +309,19 @@ h4 {
 }
 
 .page-heading {
-  background: darken($darkest, 4%);
   padding: 20px;
   margin-bottom: 30px;
-  border-radius: 10px;
-
-  &.bottomless {
-    border-radius: 10px 10px 0 0;
-  }
 
   h3 {
     font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
     font-size: 26px;
+    text-align: center;
+    color: $lightest;
 
     small {
       font-family: 'Roboto', sans-serif;
+      font-weight: 400;
       margin-top: 20px;
       display: block;
       color: $lighter;

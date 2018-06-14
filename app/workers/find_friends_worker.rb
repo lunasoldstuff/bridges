@@ -9,13 +9,15 @@ class FindFriendsWorker
     client         = current_user.twitter_client
     all_friend_ids = []
     twitter_user   = client.user
+    performed      = 0
 
     total twitter_user.friends_count
 
     begin
       client.friend_ids.each do |friend_id|
         all_friend_ids << friend_id
-        at all_friend_ids.size
+        performed += 1
+        at performed
       end
     rescue Twitter::Error::TooManyRequests => error
       sleep error.rate_limit.reset_in + 1
@@ -27,7 +29,12 @@ class FindFriendsWorker
                 .reject { |user| user.mastodon.nil? }
 
     unless current_user.mastodon.nil?
+      total (all_friend_ids * 2) + 1
+
       users.each do |user|
+        performed += 1
+        at performed
+
         begin
           user.relative_account_id = Rails.cache.fetch("#{current_user.id}/#{current_user.mastodon.domain}/#{user.mastodon.uid}", expires_in: 1.week) do
             account, _ = current_user.mastodon_client.perform_request(:get, '/api/v1/accounts/search', q: user.mastodon.uid, resolve: 'true', limit: 1)
@@ -40,6 +47,8 @@ class FindFriendsWorker
       end
 
       set_relationships!(current_user, users)
+      performed += 1
+      at performed
     end
 
     Rails.cache.write("#{current_user.id}/friends", users.map { |u| [u.id, u.relative_account_id, u.following] })
@@ -53,7 +62,7 @@ class FindFriendsWorker
     param_str   = account_ids.map { |id| "id[]=#{id}" }.join('&')
 
     current_user.mastodon_client.perform_request(:get, "/api/v1/accounts/relationships?#{param_str}").each do |relationship|
-      account_map[relationship['id']].following = relationship['following']
+      account_map[relationship['id']].following = relationship['following'] || relationship['requested']
     end
   rescue Mastodon::Error, HTTP::Error, OpenSSL::SSL::SSLError
     nil
