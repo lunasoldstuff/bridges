@@ -25,8 +25,10 @@ gem 'httplog', '~> 0.99'
 gem 'hiredis', '~> 0.6'
 gem 'redis', '~> 3.3', require: ['redis', 'redis/connection/hiredis']
 gem 'sidekiq', '~> 5.0'
+gem 'sidekiq-status'
 gem 'redis-rails', '~> 5.0'
 gem 'oj'
+gem 'react_on_rails', '11.0.0'
 
 group :development, :test do
   gem 'pry-rails', '~> 0.3'

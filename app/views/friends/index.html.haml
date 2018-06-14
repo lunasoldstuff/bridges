@@ -8,30 +8,4 @@
     For your friends to find you as well, you still need to
     = link_to 'login via Mastodon', user_mastodon_omniauth_authorize_path
 
-- if @friends.empty?
-  %p.empty-message Well, this is unfortunate. Looks like none of your Twitter friends are on Mastodon yet. Or maybe they are, but haven't signed in to this bridge service.
-
-  - if current_user.mastodon.nil?
-    %p.empty-message Here are some instances you could choose to make your account on:
-  - else
-    %p.empty-message Here are some instances you could recommend to your friends:
-- else
-  = render 'friends_grid', friends: @friends
-
-  - if @next_page || @page > 1
-    .pagination
-      - if @page > 1
-        = link_to friends_path(page: @page - 1) do
-          = fa_icon('chevron-left fw')
-          Previous
-      - if @next_page
-        = link_to friends_path(page: @next_page) do
-          Next
-          = fa_icon('chevron-right fw')
-
-  .page-heading
-    %h3
-      Your friends' instances
-      %small Here are the instances your friends are using:
-
-= render 'instances_grid', instances: @top_instances
+%pre= Sidekiq::Status::get_all(session[:job_id]).inspect
