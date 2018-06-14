@@ -81,7 +81,7 @@ export default class HelloWorld extends React.PureComponent {
           {interpolatingStyles => (
             <div className='grid'>
               {interpolatingStyles.map((style, i) => (
-                <a target='_blank' href={results[i].mastodon_url} style={{ transformOrigin: 'center center', transform: `scale(${style.scale})` }} key={results[i].mastodon_username} className='user-card' title={`@${results[i].twitter_username} on Twitter`}>
+                <a target='_blank' href={results[i].mastodon_url} style={{ pointerEvents: style.scale == 1 ? 'auto' : 'none', transformOrigin: 'center center', transform: `scale(${style.scale})` }} key={results[i].mastodon_username} className='user-card' title={`@${results[i].twitter_username} on Twitter`}>
                   <div className='avatar'><img src={results[i].avatar_url} /></div>
 
                   {results[i].following && <div className='following-indicator'>

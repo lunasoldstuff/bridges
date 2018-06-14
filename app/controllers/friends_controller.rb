@@ -36,7 +36,7 @@ class FriendsController < ApplicationController
         begin
           relationship     = current_user.mastodon_client.perform_request(:post, "/api/v1/accounts/#{friend.relative_account_id}/follow")
           friend.following = relationship['following'] || relationship['requested']
-        rescue HTTP::Error, OpenSSL::SSL::SSLError, Oj::ParseError
+        rescue HTTP::Error, OpenSSL::SSL::SSLError, Oj::ParseError, Mastodon::Error
           next
         end
       end
