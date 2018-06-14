@@ -9,3 +9,5 @@
     = link_to 'login via Mastodon', user_mastodon_omniauth_authorize_path
 
 %pre= Sidekiq::Status::get_all(session[:job_id]).inspect
+
+= react_component("HelloWorld", props: { name: "Stranger" }, prerender: false)

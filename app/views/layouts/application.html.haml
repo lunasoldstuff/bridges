@@ -7,6 +7,7 @@
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
+    = javascript_pack_tag 'hello-world-bundle'
 
     %meta{ property: 'og:type', content: 'article' }/
     %meta{ property: 'og:title', content: 'Find your Twitter friends on Mastodon' }/
@@ -17,6 +18,7 @@
 
     %meta{ name: 'twitter:card', content: 'summary' }/
     %meta{ name: 'twitter:site', content: '@MastodonProject' }/
+
   %body
     .header
       %ul.left
