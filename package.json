@@ -1,11 +1,17 @@
 {
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "axios": "^0.18.0",
     "babel-preset-react": "^6.24.1",
     "prop-types": "^15.6.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-on-rails": "11.0.7"
+    "react-intl": "^2.4.0",
+    "react-motion": "^0.5.2",
+    "react-on-rails": "11.0.7",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"

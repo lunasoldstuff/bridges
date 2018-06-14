@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'hello_world', to: 'hello_world#index'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   devise_scope :user do
@@ -8,6 +9,12 @@ Rails.application.routes.draw do
   end
 
   resources :friends, only: :index do
+    collection do
+      get :status
+      get :results
+      get :domains
+    end
+
     member do
       get :follow
     end

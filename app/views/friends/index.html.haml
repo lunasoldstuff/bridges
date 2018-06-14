@@ -1,13 +1,1 @@
-.page-heading{ class: current_user.mastodon.nil? ? 'bottomless' : '' }
-  %h3
-    Your friends
-    %small Here are your Twitter friends who are on Mastodon:
-
-- if current_user.mastodon.nil?
-  .connect-prompt
-    For your friends to find you as well, you still need to
-    = link_to 'login via Mastodon', user_mastodon_omniauth_authorize_path
-
-%pre= Sidekiq::Status::get_all(session[:job_id]).inspect
-
-= react_component("HelloWorld", props: { name: "Stranger" }, prerender: false)
+= react_component("HelloWorldApp", props: { user: { mastodonIsConnected: !current_user.mastodon.nil? } }, prerender: false)

@@ -49,3 +49,4 @@ end
 
 gem 'mini_racer', platforms: :ruby
 gem 'webpacker', '~> 3.5'
+gem 'active_model_serializers', '~> 0.10'
