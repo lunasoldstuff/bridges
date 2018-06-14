@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Motion, StaggeredMotion, spring, presets } from 'react-motion';
 import { FormattedMessage, FormattedNumber } from 'react-intl';
+import ConnectPrompt from './ConnectPrompt';
 
 export default class HelloWorld extends React.PureComponent {
   static propTypes = {
@@ -50,16 +51,12 @@ export default class HelloWorld extends React.PureComponent {
 
     return (
       <div>
-        <div className={`page-heading ${!mastodonIsConnected ? 'bottomless' : ''}`}>
+        {mastodonIsConnected ? (<div className='page-heading'>
           <h3>
             Your friends
             <small>Here are your Twitter friends who are on Mastodon:</small>
           </h3>
-        </div>
-
-        {!mastodonIsConnected && <div className='connect-prompt'>
-          For your friends to find you as well, you still need to <a target='_blank' href='/users/auth/mastodon'>login via Mastodon</a>
-        </div>}
+        </div>) : <ConnectPrompt domains={domains} />}
 
         <StaggeredMotion defaultStyles={results.map(_ => ({ scale: 0 }))} styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
           return i == 0
@@ -93,7 +90,7 @@ export default class HelloWorld extends React.PureComponent {
           </h3>
         </div>
 
-        <div className='grid'>
+        <div className='grid' id='domains'>
           {domains.map(domain => (
             <a target='_blank' className='instance-card' href={`https://${domain.uri}/about`} key={domain.uri} style={{ backgroundImage: `url(${domain.thumbnail})` }}>
               <div className='info'>
@@ -104,6 +101,13 @@ export default class HelloWorld extends React.PureComponent {
               </div>
             </a>
           ))}
+
+          <a target='_blank' className='instance-card' href='https://joinmastodon.org/#getting-started'>
+            <div className='info'>
+              <span className='title'>Find more on</span>
+              <span className='uri'>joinmastodon.org</span>
+            </div>
+          </a>
         </div>
       </div>
     );

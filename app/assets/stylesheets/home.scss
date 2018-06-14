@@ -308,7 +308,8 @@ h4 {
   }
 }
 
-.page-heading {
+.page-heading,
+.connect-prompt {
   padding: 20px;
   margin-bottom: 30px;
 
@@ -326,6 +327,59 @@ h4 {
       display: block;
       color: $lighter;
       font-size: 18px;
+    }
+  }
+}
+
+.connect-prompt {
+  background: $vibrant;
+  color: $white;
+  border-radius: 4px;
+  text-align: center;
+  padding: 40px;
+
+  h3,
+  p {
+    color: #fff;
+    text-align: center;
+  }
+
+  h3 {
+    margin-bottom: 20px;
+  }
+
+  p {
+    margin-bottom: 20px;
+
+    a {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+
+  & > a {
+    font-weight: 500;
+    color: $vibrant;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: inherit;
+    display: inline-block;
+    text-align: center;
+    font-size: 16px;
+    text-decoration: none;
+    line-height: 36px;
+    padding: 4px 16px;
+    margin: 0 auto;
+    border: 0;
+    cursor: pointer;
+
+    &.secondary {
+      padding: 2px 14px;
+      border: 2px solid #fff;
+      background: transparent;
+      margin-left: 4px;
+      color: #fff;
     }
   }
 }
@@ -576,21 +630,6 @@ h4 {
     text-transform: uppercase;
     font-weight: 500;
     text-decoration: none;
-  }
-}
-
-.connect-prompt {
-  background: $vibrant;
-  margin-top: -30px;
-  margin-bottom: 30px;
-  color: $white;
-  padding: 10px;
-  border-radius: 0 0 5px 5px;
-  text-align: center;
-
-  a {
-    color: $white;
-    font-weight: 500;
   }
 }
 
