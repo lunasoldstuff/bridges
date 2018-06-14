@@ -3,8 +3,7 @@
     Find your friends on Mastodon
     %small Login via Twitter to get started
 
-= link_to 'https://joinmastodon.org', class: 'hero-link' do
-  = image_tag 'preview.jpg', alt: 'Elephant friend, paperplanes and a trombone with the Mastodon logo in the center'
+%iframe.hero-link{ width: 600, height: 337, src: "https://www.youtube-nocookie.com/embed/IPSbNdBmWKE?rel=0&showinfo=0", frameborder: 0, allow: "autoplay; encrypted-media", allowfullscreen: true }
 
 .login-buttons
   = content_tag twitter? ? :div : :a, href: user_twitter_omniauth_authorize_path, class: 'twitter' do

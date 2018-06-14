@@ -307,6 +307,11 @@ h4 {
       padding-right: 0;
     }
   }
+
+  @media screen and (max-width: 375px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 .page-heading,
@@ -320,6 +325,7 @@ h4 {
     font-size: 26px;
     text-align: center;
     color: $lightest;
+    line-height: 1.2;
 
     small {
       font-family: 'Roboto', sans-serif;
@@ -381,6 +387,10 @@ h4 {
       background: transparent;
       margin-left: 4px;
       color: #fff;
+    }
+
+    @media screen and (max-width: 375px) {
+      margin-bottom: 10px;
     }
   }
 }
@@ -471,6 +481,12 @@ h4 {
     &:first-child {
       margin-right: 10px;
     }
+
+    @media screen and (max-width: 375px) {
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+    }
   }
 
   .login-brand {
@@ -549,12 +565,24 @@ h4 {
     padding: 10px;
     padding-top: 40px;
     border-radius: 0 0 10px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .title {
     font-weight: 500;
     color: $lightest;
     display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .uri {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &:hover,
@@ -662,14 +690,7 @@ h4 {
   display: block;
   text-decoration: none;
   color: $white;
-
-  img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0;
-  }
-
+  width: 100%;
   margin-bottom: 30px;
   border-radius: 10px;
   overflow: hidden;
