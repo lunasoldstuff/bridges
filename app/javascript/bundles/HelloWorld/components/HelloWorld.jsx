@@ -15,6 +15,7 @@ export default class HelloWorld extends React.PureComponent {
     fetchProgress: PropTypes.func.isRequired,
     fetchResults: PropTypes.func.isRequired,
     mastodonIsConnected: PropTypes.bool.isRequired,
+    defaultDomains: PropTypes.array.isRequired,
   };
 
   componentDidMount () {
@@ -23,7 +24,7 @@ export default class HelloWorld extends React.PureComponent {
   }
 
   render () {
-    const { status, inProgress, at, total, results, domains, mastodonIsConnected } = this.props;
+    const { status, inProgress, at, total, results, domains, defaultDomains, mastodonIsConnected } = this.props;
 
     if (inProgress) {
       const pct   = total > 0 ? (at / total).toFixed(2) * 100 : 10;
@@ -47,6 +48,12 @@ export default class HelloWorld extends React.PureComponent {
           </div>
         </div>
       );
+    } else if (results.length === 0 && !mastodonIsConnected) {
+      return (
+        <div>
+          <ConnectPrompt isPioneer domains={defaultDomains} />
+        </div>
+      );
     }
 
     return (
@@ -56,9 +63,13 @@ export default class HelloWorld extends React.PureComponent {
             Your friends
             <small>Here are your Twitter friends who are on Mastodon:</small>
           </h3>
-        </div>) : <ConnectPrompt domains={domains} />}
+        </div>) : <ConnectPrompt domains={defaultDomains} />}
 
-        <StaggeredMotion defaultStyles={results.map(_ => ({ scale: 0 }))} styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
+        {results.length === 0 && <p className='lead'>
+          Right now, there are no results to be shown here. But maybe your friends haven't used this tool yet! Or maybe you are the trendsetter!
+        </p>}
+
+        {results.length > 0 && <StaggeredMotion defaultStyles={results.map(_ => ({ scale: 0 }))} styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
           return i == 0
             ? { scale: spring(1, presets.wobbly) }
             : { scale: spring(prevInterpolatedStyles[i - 1].scale, presets.wobbly) };
@@ -81,7 +92,7 @@ export default class HelloWorld extends React.PureComponent {
               ))}
             </div>
           )}
-        </StaggeredMotion>
+        </StaggeredMotion>}
 
         <div className='page-heading'>
           <h3>
@@ -91,7 +102,7 @@ export default class HelloWorld extends React.PureComponent {
         </div>
 
         <div className='grid' id='domains'>
-          {domains.map(domain => (
+          {(domains.length > 0 ? domains : defaultDomains).map(domain => (
             <a target='_blank' className='instance-card' href={`https://${domain.uri}/about`} key={domain.uri} style={{ backgroundImage: `url(${domain.thumbnail})` }}>
               <div className='info'>
                 <span className='title'>{domain.title}</span>

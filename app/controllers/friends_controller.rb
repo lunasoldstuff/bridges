@@ -5,8 +5,10 @@ require 'twitter'
 class FriendsController < ApplicationController
   before_action :authenticate_user!
 
-  MAX_INSTANCES    = 20
-  MIN_INSTANCES    = 4
+  MAX_INSTANCES = 20
+  MIN_INSTANCES = 4
+
+  helper_method :default_domains
 
   def index
     session[:job_id] = FindFriendsWorker.perform_async(current_user.id) unless job_exists?
@@ -51,7 +53,7 @@ class FriendsController < ApplicationController
   def friends_domains
     data = Rails.cache.fetch("#{current_user.id}/friends")
 
-    return default_domains.sample(MIN_INSTANCES) if data.empty?
+    return default_domains if data.empty?
 
     Authorization.where(provider: 'mastodon', user_id: data.map(&:first))
                  .map(&:uid)
@@ -76,7 +78,7 @@ class FriendsController < ApplicationController
       mastodon.sdf.org
       x0r.be
       toot.cafe
-    )
+    ).sample(MIN_INSTANCES).map { |k| fetch_instance_info(k) }.compact
   end
 
   def fetch_instance_info(host)
