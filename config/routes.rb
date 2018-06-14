@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       get :status
       get :results
       get :domains
+
+      post :follow_all
     end
 
     member do

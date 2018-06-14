@@ -21,7 +21,7 @@ class Authorization < ApplicationRecord
     else
       @info = {}
     end
-  rescue Mastodon::Error, HTTP::Error, OpenSSL::SSL::SSLError
+  rescue Mastodon::Error, HTTP::Error, OpenSSL::SSL::SSLError, Oj::ParseError, NoMethodError
     @info = {}
   end
 end

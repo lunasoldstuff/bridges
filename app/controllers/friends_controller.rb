@@ -26,6 +26,25 @@ class FriendsController < ApplicationController
     render json: Sidekiq::Status::get_all(job_id)
   end
 
+  def follow_all
+    if Sidekiq::Status::complete?(job_id)
+      _friends = friends
+
+      _friends.each do |friend|
+        next if friend.relative_account_id.blank? || friend.following
+
+        relationship     = current_user.mastodon_client.perform_request(:post, "/api/v1/accounts/#{friend.relative_account_id}/follow")
+        friend.following = relationship['following'] || relationship['requested']
+      rescue HTTP::Error, OpenSSL::SSL::SSLError, Oj::ParseError
+        next
+      end
+
+      Rails.cache.write("#{current_user.id}/friends", _friends.map { |f| [f.id, f.relative_account_id, f.following] })
+    end
+
+    redirect_to friends_path
+  end
+
   private
 
   def job_id

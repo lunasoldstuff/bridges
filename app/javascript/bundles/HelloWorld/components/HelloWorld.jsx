@@ -69,10 +69,14 @@ export default class HelloWorld extends React.PureComponent {
           Right now, there are no results to be shown here. But maybe your friends haven't used this tool yet! Or maybe you are the trendsetter!
         </p>}
 
+        {results.length > 0 && mastodonIsConnected && <div style={{ textAlign: 'center', marginTop: -10, marginBottom: 20 }}>
+          <a className='candy-button' href='/friends/follow_all' data-method='post'>Follow all friends on Mastodon</a>
+        </div>}
+
         {results.length > 0 && <StaggeredMotion defaultStyles={results.map(_ => ({ scale: 0 }))} styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
           return i == 0
-            ? { scale: spring(1, presets.wobbly) }
-            : { scale: spring(prevInterpolatedStyles[i - 1].scale, presets.wobbly) };
+            ? { scale: spring(1, presets.gentle) }
+            : { scale: spring(prevInterpolatedStyles[i - 1].scale, presets.gentle) };
         })}>
           {interpolatingStyles => (
             <div className='grid'>
