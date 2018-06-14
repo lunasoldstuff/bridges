@@ -16,7 +16,6 @@ class FindFriendsWorker
       client.friend_ids.each do |friend_id|
         all_friend_ids << friend_id
         at all_friend_ids.size
-        sleep 1
       end
     rescue Twitter::Error::TooManyRequests => error
       sleep error.rate_limit.reset_in + 1
