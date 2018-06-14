@@ -5,9 +5,9 @@ import { FormattedMessage, FormattedNumber } from 'react-intl';
 
 export default class HelloWorld extends React.PureComponent {
   static propTypes = {
-    status: PropTypes.string.isRequired,
-    total: PropTypes.number.isRequired,
-    at: PropTypes.number.isRequired,
+    status: PropTypes.string,
+    total: PropTypes.number,
+    at: PropTypes.number,
     results: PropTypes.array.isRequired,
     domains: PropTypes.array.isRequired,
     inProgress: PropTypes.bool.isRequired,
@@ -26,7 +26,7 @@ export default class HelloWorld extends React.PureComponent {
 
     if (inProgress) {
       const pct   = total > 0 ? (at / total).toFixed(2) * 100 : 10;
-      const label = total > 0 ? <span>{at} / {total}</span> : 'Preparing';
+      const label = total > 0 ? <span>{at || 0} / {total || 0}</span> : 'Preparing';
 
       return (
         <div>
@@ -38,7 +38,7 @@ export default class HelloWorld extends React.PureComponent {
           </div>
 
           <div className='progress-bar'>
-            <Motion defaultStyle={{ x: 0 }} style={{ x: spring(pct, presets.gentle) }}>
+            <Motion defaultStyle={{ x: 0 }} style={{ x: spring(pct, presets.wobbly) }}>
               {value => <div style={{ width: `${value.x}%` }} />}
             </Motion>
 
@@ -61,15 +61,15 @@ export default class HelloWorld extends React.PureComponent {
           For your friends to find you as well, you still need to <a target='_blank' href='/users/auth/mastodon'>login via Mastodon</a>
         </div>}
 
-        <StaggeredMotion defaultStyles={results.map(_ => ({ height: 0 }))} styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
+        <StaggeredMotion defaultStyles={results.map(_ => ({ scale: 0 }))} styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
           return i == 0
-            ? { height: spring(80, presets.gentle) }
-            : { height: spring(prevInterpolatedStyles[i - 1].height, presets.gentle) };
+            ? { scale: spring(1, presets.wobbly) }
+            : { scale: spring(prevInterpolatedStyles[i - 1].scale, presets.wobbly) };
         })}>
           {interpolatingStyles => (
             <div className='grid'>
               {interpolatingStyles.map((style, i) => (
-                <a target='_blank' href={results[i].mastodon_url} style={{ height: style.height }} key={results[i].mastodon_username} className='user-card' title={`@${results[i].twitter_username} on Twitter`}>
+                <a target='_blank' href={results[i].mastodon_url} style={{ transformOrigin: 'center center', transform: `scale(${style.scale})` }} key={results[i].mastodon_username} className='user-card' title={`@${results[i].twitter_username} on Twitter`}>
                   <div className='avatar'><img src={results[i].avatar_url} /></div>
 
                   {results[i].following && <div className='following-indicator'>
