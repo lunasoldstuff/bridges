@@ -23,7 +23,7 @@ class FriendsController < ApplicationController
   end
 
   def status
-    render json: Sidekiq::Status::get_all(job_id)
+    render json: Sidekiq::Status::get_all(job_id), serializer: StatusSerializer
   end
 
   def follow_all
