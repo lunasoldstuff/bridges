@@ -1,0 +1,26 @@
+---
+ja:
+  accounts:
+    show:
+      disconnect: 切断
+      heading:
+        description: 接続されたアカウントを管理する
+        title: 接続中
+  home:
+    index:
+      connect_mastodon: Mastodonに接続
+      connect_twitter: Twitterに接続
+      connected: 件接続中
+      description: このウェブサイトに登録したTwitterユーザーとMastodonユーザーのデータベースを使って複数のMastodonインスタンス間でそれらを一致させます。あなたの友だちはその中にいますか?
+      heading:
+        description: Twitterでログインして始める
+        title: Mastodonの友だちを探す
+  layouts:
+    application:
+      account: アカウント
+      footer_html: |
+        このウェブサイトは<a href="https://mastodon.social/@Mastodon" target="_blank">@Mastodon@mastodon.social</a> / <a href="https://twitter.com/MastodonProject" target="_blank">@MastodonProject</a>によって運営されています。<br />
+        <a href="https://source.joinmastodon.org/mastodon/bridge" target="_blank">ソースコード</a>
+      friends: 友だち
+      logout: ログアウト
+      title: MastodonであなたのTwitterの友だちを探す - Mastodon Bridge

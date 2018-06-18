@@ -103,6 +103,8 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.6.2)
+      devise (>= 4.4)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.4.0)
@@ -139,6 +141,7 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     http-form_data (2.1.1)
+    http_accept_language (2.1.1)
     http_parser.rb (0.6.0)
     httplog (0.99.7)
       colorize
@@ -349,12 +352,14 @@ DEPENDENCIES
   binding_of_caller (~> 0.7)
   bootsnap
   devise (~> 4.4)
+  devise-i18n (~> 1.6)
   dotenv-rails (~> 2.2)
   fast_blank (~> 1.0)
   font-awesome-rails
   hamlit-rails
   hiredis (~> 0.6)
   http
+  http_accept_language (~> 2.1)
   httplog (~> 0.99)
   jquery-rails
   listen (~> 3.0.5)

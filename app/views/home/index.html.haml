@@ -1,7 +1,7 @@
 .page-heading
   %h3
-    Find your friends on Mastodon
-    %small Login via Twitter to get started
+    = t('.heading.title')
+    %small= t('.heading.description')
 
 %iframe.hero-link{ width: 600, height: 337, src: "https://www.youtube-nocookie.com/embed/IPSbNdBmWKE?rel=0&showinfo=0", frameborder: 0, allow: "autoplay; encrypted-media", allowfullscreen: true }
 
@@ -11,26 +11,25 @@
     .login-content
       .login-numbers
         %strong= number_with_delimiter @twitter_count
-        connected
+        = t('.connected')
       - if twitter?
         .login-name
           %strong= current_user.twitter.display_name.presence || current_user.twitter.uid
           = fa_icon 'check'
       - else
-        %span.login-btn Connect Twitter
+        %span.login-btn= t('.connect_twitter')
 
   = content_tag mastodon? ? :div : :a, href: user_mastodon_omniauth_authorize_path, class: 'mastodon' do
     .login-brand= image_tag 'logo.svg', alt: 'Mastodon'
     .login-content
       .login-numbers
         %strong= number_with_delimiter @mastodon_count
-        connected
+        = t('.connected')
       - if mastodon?
         .login-name
           %strong= current_user.mastodon.display_name.presence || current_user.mastodon.uid
           = fa_icon 'check'
       - else
-        %span.login-btn Connect Mastodon
+        %span.login-btn= t('.connect_mastodon')
 
-%p
-  This website uses a database of Twitter users and Mastodon users who signed in here to match them together across multiple Mastodon instances. Are your friends among them?
+%p= t('.description')

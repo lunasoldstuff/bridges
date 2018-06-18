@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Find your Twitter friends on Mastodon - Mastodon Bridge
+    %title= t('.title')
 
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
@@ -28,11 +28,11 @@
 
       %ul.right
         - if twitter?
-          %li= link_to 'Friends', friends_path
+          %li= link_to t('.friends'), friends_path
 
         - if user_signed_in?
-          %li= link_to 'Account', account_path
-          %li= link_to 'Logout', destroy_user_session_path, method: :delete
+          %li= link_to t('.account'), account_path
+          %li= link_to t('.logout'), destroy_user_session_path, method: :delete
 
     - if flash[:notice]
       .flash-message
@@ -47,11 +47,4 @@
 
     %hr/
 
-    %p.footer
-      This website is run by
-      %a{:href => "https://mastodon.social/@Mastodon"} @Mastodon@mastodon.social
-      \/
-      = succeed "." do
-        %a{:href => "https://twitter.com/MastodonProject"} @MastodonProject
-      %br/
-      %a{:href => "https://source.joinmastodon.org/mastodon/bridge", :target => "_blank"} Source code
+    %p.footer= t('.footer_html')
