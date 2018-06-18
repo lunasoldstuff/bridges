@@ -8,9 +8,9 @@
     %li
       .connection-brand{ class: authorization.provider }
         - if authorization.provider == 'twitter'
-          = image_tag 'twitter-square.png', alt: 'Twitter'
+          = image_pack_tag 'images/twitter-square.png', alt: 'Twitter'
         - else
-          = image_tag 'logo.svg', alt: 'Mastodon'
+          = image_pack_tag 'images/logo.svg', alt: 'Mastodon'
 
       .connection-info
         %strong= authorization.display_name.presence || authorization.uid

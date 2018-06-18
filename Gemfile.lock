@@ -118,8 +118,6 @@ GEM
       multipart-post (>= 1.2, < 3)
     fast_blank (1.0.0)
     ffi (1.9.25)
-    font-awesome-rails (4.7.0.4)
-      railties (>= 3.2, < 6.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hamlit (2.8.8)
@@ -148,10 +146,6 @@ GEM
       rack
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
-    jquery-rails (4.3.3)
-      rails-dom-testing (>= 1, < 3)
-      railties (>= 4.2.0)
-      thor (>= 0.14, < 2.0)
     jsonapi-renderer (0.2.0)
     jwt (1.5.6)
     libv8 (6.3.292.48.1)
@@ -290,17 +284,6 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    sass (3.5.6)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (5.0.7)
-      railties (>= 4.0.0, < 6)
-      sass (~> 3.1)
-      sprockets (>= 2.8, < 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
-      tilt (>= 1.1, < 3)
     sidekiq (5.1.3)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -328,8 +311,6 @@ GEM
     tilt (2.0.8)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.11)
-      execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
@@ -355,13 +336,11 @@ DEPENDENCIES
   devise-i18n (~> 1.6)
   dotenv-rails (~> 2.2)
   fast_blank (~> 1.0)
-  font-awesome-rails
   hamlit-rails
   hiredis (~> 0.6)
   http
   http_accept_language (~> 2.1)
   httplog (~> 0.99)
-  jquery-rails
   listen (~> 3.0.5)
   lograge
   mastodon-api!
@@ -377,13 +356,11 @@ DEPENDENCIES
   react_on_rails (= 11.0.0)
   redis (~> 3.3)
   redis-rails
-  sass-rails (~> 5.0)
   sidekiq (~> 5.0)
   sidekiq-status
   spring
   spring-watcher-listen (~> 2.0.0)
   twitter!
-  uglifier
   webpacker (~> 3.5)
 
 RUBY VERSION

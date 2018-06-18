@@ -5,14 +5,13 @@
     %title= t('.title')
 
     = csrf_meta_tags
-    = stylesheet_link_tag 'application', media: 'all'
-    = javascript_include_tag 'application'
-    = javascript_pack_tag 'hello-world-bundle'
+    = stylesheet_pack_tag 'application', media: 'all'
+    = javascript_pack_tag 'application'
 
     %meta{ property: 'og:type', content: 'article' }/
     %meta{ property: 'og:title', content: 'Find your Twitter friends on Mastodon' }/
     %meta{ property: 'og:description', content: 'This bridge tool matches you with your friends in the decentralized Mastodon network' }/
-    %meta{ property: 'og:image', content: image_url('preview.jpg') }/
+    %meta{ property: 'og:image', content: asset_pack_url('images/preview.jpg') }/
     %meta{ property: 'og:url', content: root_url }/
     %meta{ property: 'og:site_name', content: 'Mastodon Bridge' }/
 
@@ -24,7 +23,7 @@
       %ul.left
         %li
           = link_to root_path, class: 'brand' do
-            = image_tag 'logo_full.svg', alt: 'Mastodon Bridge'
+            = image_pack_tag 'images/logo_full.svg', alt: 'Mastodon Bridge'
 
       %ul.right
         - if twitter?
