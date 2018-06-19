@@ -1,0 +1,26 @@
+---
+de:
+  accounts:
+    show:
+      disconnect: Verbindung trennen
+      heading:
+        description: Verwalte deine verbundenen Accounts
+        title: Verbindungen
+  home:
+    index:
+      connect_mastodon: Verbinde Mastodon
+      connect_twitter: Verbinde Twitter
+      connected: verbunden
+      description: Diese Webseite nutzt eine Datebank an Twitter und Mastodon Nutzern, welche hier angemeldet sind, um sie über die verschiedenen Mastodon Instanzen zuordnen zu können. Sind deine Freunde darunter?
+      heading:
+        description: Über Twitter anmelden, um loszulegen
+        title: Finde deine Freunde auf Mastodon
+  layouts:
+    application:
+      account: Account
+      footer_html: |
+        Diese Webseite wird betrieben von <a href="https://mastodon.social/@Mastodon" target="_blank">@Mastodon@mastodon.social</a> / <a href="https://twitter.com/MastodonProject" target="_blank">@MastodonProject</a>.<br />
+        <a href="https://source.joinmastodon.org/mastodon/bridge" target="_blank">Quellcode</a>
+      friends: Freunde
+      logout: Ausloggen
+      title: Finde deine Twitter-Freunde auf Mastodon - Mastodon Bridge
