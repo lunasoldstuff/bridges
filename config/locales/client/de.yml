@@ -1,0 +1,24 @@
+---
+de:
+  connect_prompt:
+    create_mastodon_account: Erstelle einen Mastodon Account
+    login_via_mastodon: Einloggen über Mastodon
+    pioneer:
+      body: Du bist vielleicht der Erste unter deinen Twitter-Freunden, der Mastodon entdeckt. Verbinde deinen Mastodon Account, damit sie ihn beim Beitritt sehen.
+      title: Du bist ein Pionier!
+    tutorial:
+      body: Damit deine Freunde Dich ebenfalls finden, musst Du Dich noch mit deinem Mastodon Account einloggen. Wenn Du Hilfe benötigst einen Server für einen neuen Account auszusuchen, {link} oder klicke auf die Schaltfläche unten.
+      link: Sehe wo deine Freunde sich angemeldet haben
+      title: Fast geschafft!
+  friends:
+    empty: Momentan gibt es hier noch keine Ergebnisse. Aber vielleicht haben deine Freunde dieses Tool noch nicht benutzt. Oder vielleicht bist Du der Trendsetter!
+    find_more: Finde mehr auf
+    follow_all: Folge allen Freunden auf Mastodon
+    headline: Deine Freunde
+    num_users: '{formatted_count} {count, plural, eine {person} andere {people}}'
+    searching:
+      headline: Auf der Suche nach deinen Freunden...
+      subheadline: Bitte warte, während nach deinen Twitter-Freunden gesucht wird
+    subheadline: 'Hier sind deine Twitter-Freunde, welche auf Mastodon sind:'
+    your_friends_instance:
+      headline: Die Instanze deiner Freunde
