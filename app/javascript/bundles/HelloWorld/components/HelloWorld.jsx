@@ -6,7 +6,6 @@ import ConnectPrompt from './ConnectPrompt';
 
 export default class HelloWorld extends React.PureComponent {
   static propTypes = {
-    status: PropTypes.string,
     total: PropTypes.number,
     at: PropTypes.number,
     results: PropTypes.array.isRequired,
@@ -24,7 +23,7 @@ export default class HelloWorld extends React.PureComponent {
   }
 
   render () {
-    const { status, inProgress, at, total, results, domains, defaultDomains, mastodonIsConnected } = this.props;
+    const { inProgress, at, total, results, domains, defaultDomains, mastodonIsConnected } = this.props;
 
     if (inProgress) {
       const pct   = total > 0 ? (at / total).toFixed(2) * 100 : 10;
@@ -33,10 +32,14 @@ export default class HelloWorld extends React.PureComponent {
       return (
         <div>
           <div className='page-heading'>
-            <h3>
-              Searching for your friends...
-              <small>Please wait while your Twitter friends are being fetched</small>
-            </h3>
+            <FormattedMessage id='friends.searching.headline' defaultMessage='Searching for your friends...'>
+              {text => (
+                <h3>
+                  {text}
+                  <FormattedMessage id='friends.searching.subheadline' defaultMessage='Please wait while your Twitter friends are being fetched' tagName='small' />
+                </h3>
+              )}
+            </FormattedMessage>
           </div>
 
           <div className='progress-bar'>
@@ -59,18 +62,24 @@ export default class HelloWorld extends React.PureComponent {
     return (
       <div>
         {mastodonIsConnected ? (<div className='page-heading'>
-          <h3>
-            Your friends
-            <small>Here are your Twitter friends who are on Mastodon:</small>
-          </h3>
+          <FormattedMessage id='friends.headline' defaultMessage='Your friends'>
+            {text => (
+              <h3>
+                {text}
+                <FormattedMessage id='friends.subheadline' defaultMessage='Here are your Twitter friends who are on Mastodon:' tagName='small' />
+              </h3>
+            )}
+          </FormattedMessage>
         </div>) : <ConnectPrompt domains={defaultDomains} />}
 
         {results.length === 0 && <p className='lead'>
-          Right now, there are no results to be shown here. But maybe your friends haven't used this tool yet! Or maybe you are the trendsetter!
+          <FormattedMessage id='friends.empty' defaultMessage={`Right now, there are no results to be shown here. But maybe your friends haven't used this tool yet! Or maybe you are the trendsetter!`} />
         </p>}
 
         {results.length > 0 && mastodonIsConnected && <div style={{ textAlign: 'center', marginTop: -10, marginBottom: 20 }}>
-          <a className='candy-button' href='/friends/follow_all' data-method='post'>Follow all friends on Mastodon</a>
+          <a className='candy-button' href='/friends/follow_all' data-method='post'>
+            <FormattedMessage id='friends.follow_all' defaultMessage='Follow all friends on Mastodon' />
+          </a>
         </div>}
 
         {results.length > 0 && <StaggeredMotion defaultStyles={results.map(_ => ({ scale: 0 }))} styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
@@ -99,10 +108,14 @@ export default class HelloWorld extends React.PureComponent {
         </StaggeredMotion>}
 
         <div className='page-heading'>
-          <h3>
-            Your friends' instances
-            <small>Here are the servers your friends are using:</small>
-          </h3>
+          <FormattedMessage id='friends.your_friends_instance.headline' defaultMessage={`Your friends' instances`}>
+            {text => (
+              <h3>
+                {text}
+                <FormattedMessage id='friends.your_friends_instance.subheadline' defaultMessage='Here are the servers your friends are using:' tagName='small' />
+              </h3>
+            )}
+          </FormattedMessage>
         </div>
 
         <div className='grid' id='domains'>
@@ -112,14 +125,16 @@ export default class HelloWorld extends React.PureComponent {
                 <span className='title'>{domain.title}</span>
                 <span className='uri'>{domain.uri}</span>
 
-                {domain.stats && <span className='users'> (<FormattedMessage id='num_users' defaultMessage='{formatted_count} {count, plural, one {person} other {people}}' values={{ count: domain.stats.user_count, formatted_count: <FormattedNumber value={domain.stats.user_count} /> }} />)</span>}
+                {domain.stats && <span className='users'> (<FormattedMessage id='friends.num_users' defaultMessage='{formatted_count} {count, plural, one {person} other {people}}' values={{ count: domain.stats.user_count, formatted_count: <FormattedNumber value={domain.stats.user_count} /> }} />)</span>}
               </div>
             </a>
           ))}
 
           <a target='_blank' className='instance-card' href='https://joinmastodon.org/#getting-started'>
             <div className='info'>
-              <span className='title'>Find more on</span>
+              <FormattedMessage id='friends.find_more' defaultMessage='Find more on'>
+                {text => <span className='title'>{text}</span>}
+              </FormattedMessage>
               <span className='uri'>joinmastodon.org</span>
             </div>
           </a>

@@ -1,0 +1,25 @@
+---
+en:
+  connect_prompt:
+    create_mastodon_account: Create Mastodon account
+    login_via_mastodon: Login via Mastodon
+    pioneer:
+      body: You might be the first among your Twitter friends to explore Mastodon. Be sure to connect your Mastodon account so they see you when they join.
+      title: You are a pioneer!
+    tutorial:
+      body: For your friends to find you as well, you still need to login with your Mastodon account. If you need help choosing a server to create a new account on, {link} or click the button below.
+      link: see where your friends have signed up
+      title: Almost there!
+  friends:
+    empty: Right now, there are no results to be shown here. But maybe your friends haven't used this tool yet! Or maybe you are the trendsetter!
+    find_more: Find more on
+    follow_all: Follow all friends on Mastodon
+    headline: Your friends
+    num_users: '{formatted_count} {count, plural, one {person} other {people}}'
+    searching:
+      headline: Searching for your friends...
+      subheadline: Please wait while your Twitter friends are being fetched
+    subheadline: 'Here are your Twitter friends who are on Mastodon:'
+    your_friends_instance:
+      headline: Your friends' instances
+      subheadline: 'Here are the servers your friends are using:'

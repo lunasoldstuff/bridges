@@ -6,7 +6,7 @@
 ReactOnRails.configure do |config|
   # This configures the script to run to build the production assets by webpack. Set this to nil
   # if you don't want react_on_rails building this file for you.
-  config.build_production_command = "RAILS_ENV=production NODE_ENV=production bin/webpack"
+  config.build_production_command = 'RAILS_ENV=production NODE_ENV=production bin/webpack'
 
   ################################################################################
   ################################################################################
@@ -22,7 +22,7 @@ ReactOnRails.configure do |config|
   # with rspec then this controls what yarn command is run
   # to automatically refresh your webpack assets on every test run.
   #
-  config.build_test_command = "RAILS_ENV=test bin/webpack"
+  config.build_test_command = 'RAILS_ENV=test bin/webpack'
 
   ################################################################################
   ################################################################################
@@ -38,5 +38,20 @@ ReactOnRails.configure do |config|
   # different. You should have ONE server bundle which can create all of your server rendered
   # React components.
   #
-  config.server_bundle_js_file = "hello-world-bundle.js"
+  config.server_bundle_js_file = 'server-bundle.js'
+
+  ################################################################################
+  # I18N OPTIONS
+  ################################################################################
+  # Replace the following line to the location where you keep translation.js & default.js for use
+  # by the npm packages react-intl. Be sure this directory exists!
+  config.i18n_dir = Rails.root.join('app', 'javascript', 'locales')
+  # If not using the i18n feature, then leave this section commented out or set the value
+  # of config.i18n_dir to nil.
+  #
+  # Replace the following line to the location where you keep your client i18n yml files
+  # that will source for automatic generation on translations.js & default.js
+  # By default(without this option) all yaml files from Rails.root.join("config", "locales")
+  # and installed gems are loaded
+  config.i18n_yml_dir = Rails.root.join('config', 'locales', 'client')
 end

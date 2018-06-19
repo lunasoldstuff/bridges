@@ -1,0 +1,26 @@
+---
+ja:
+  connect_prompt:
+    create_mastodon_account: Mastodonのアカウントを作る
+    login_via_mastodon: Mastodonでログインする
+    pioneer:
+      body: あなたはTwitterの友だちの中でこのツールを使う最初の人かもしれません。Mastodonアカウントを接続して、友だちがMastodonに参加するときにあなたを探せるようにしましょう。
+      title: あなたはパイオニアです!
+    tutorial:
+      body: 友だちにあなたを見つけてもらうためにはMastodonのアカウントでログインする必要があります。新しいアカウントを作るインスタンスを選択する場合は{link}か下のボタンをクリックしてください。
+      link: あなたの友だちがアカウントを作ったインスタンスを見る
+      title: あと少し!
+  friends:
+    empty: 今ここに表示される結果はありません。ですがあなたの友だちがこのツールをまだ使っていない可能性があります! もしくはあなたがトレンドセッターです!
+    find_more: もっと探す
+    follow_all: 友だちを全員Mastodonでフォローする
+    headline: あなたの友だち
+    num_users: '{formatted_count}人'
+    searching:
+      headline: あなたの友だちを探しています...
+      subheadline: あなたのTwitterの友だちの情報が取得されている間お待ちください
+    subheadline: 'MastodonにいるあなたのTwitterの友だちは次の通りです:'
+    your_friends_instance:
+      headline: あなたの友だちのインスタンス
+      subheadline: 'あなたの友だちが使っているサーバーは次の通りです:'
+

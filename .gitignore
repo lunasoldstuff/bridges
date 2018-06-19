@@ -16,6 +16,8 @@
 # Ignore Byebug command history file.
 .byebug_history
 .env
+/app/javascript/locales/*
+!/app/javascript/locales/.keep
 /public/assets
 /public/packs
 /public/packs-test
