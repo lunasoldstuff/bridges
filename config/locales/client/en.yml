@@ -15,7 +15,7 @@ en:
     find_more: Find more on
     follow_all: Follow all friends on Mastodon
     headline: Your friends
-    num_users: '{formatted_count} {count, plural, one {person} other {people}}'
+    num_users: "{formatted_count} {count, plural, one {person} other {people}}"
     searching:
       headline: Searching for your friends...
       subheadline: Please wait while your Twitter friends are being fetched
