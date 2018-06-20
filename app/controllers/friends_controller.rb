@@ -23,14 +23,14 @@ class FriendsController < ApplicationController
   end
 
   def status
-    render json: Sidekiq::Status::get_all(job_id), serializer: StatusSerializer
+    render json: Sidekiq::Status.get_all(job_id), serializer: StatusSerializer
   end
 
   def follow_all
-    if Sidekiq::Status::complete?(job_id)
-      _friends = friends
+    if Sidekiq::Status.complete?(job_id)
+      friends = self.friends
 
-      _friends.each do |friend|
+      friends.each do |friend|
         next if friend.relative_account_id.blank? || friend.following
 
         begin
@@ -41,7 +41,7 @@ class FriendsController < ApplicationController
         end
       end
 
-      Rails.cache.write("#{current_user.id}/friends", _friends.map { |f| [f.id, f.relative_account_id, f.following] })
+      Rails.cache.write("#{current_user.id}/friends", friends.map { |f| [f.id, f.relative_account_id, f.following] })
     end
 
     redirect_to friends_path
@@ -54,11 +54,11 @@ class FriendsController < ApplicationController
   end
 
   def job_exists?
-    job_id.present? && Sidekiq::Status::get_all(job_id).key?('status')
+    job_id.present? && Sidekiq::Status.get_all(job_id).key?('status')
   end
 
   def friends
-    return unless Sidekiq::Status::complete?(job_id)
+    return unless Sidekiq::Status.complete?(job_id)
 
     data_map = Rails.cache.fetch("#{current_user.id}/friends") { [] }.map { |d| [d.first, d] }.to_h
 
@@ -79,8 +79,8 @@ class FriendsController < ApplicationController
     Authorization.where(provider: 'mastodon', user_id: data.map(&:first))
                  .map(&:uid)
                  .map { |uid| uid.split('@').last }
-                 .inject(Hash.new(0)) { |h, k| h[k] += 1; h }
-                 .sort_by { |k, v| -v }
+                 .each_with_object(Hash.new(0)) { |k, h| h[k] += 1 }
+                 .sort_by { |_k, v| -v }
                  .take(MAX_INSTANCES)
                  .map { |k, _| fetch_instance_info(k) }
                  .compact

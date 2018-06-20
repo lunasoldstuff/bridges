@@ -3,10 +3,10 @@
 class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:twitter, :mastodon]
 
-  has_many :authorizations
+  has_many :authorizations, dependent: :destroy
 
-  has_one :twitter,  -> { where(provider: 'twitter') },  class_name: 'Authorization'
-  has_one :mastodon, -> { where(provider: 'mastodon') }, class_name: 'Authorization'
+  has_one :twitter,  -> { where(provider: 'twitter') },  class_name: 'Authorization', inverse_of: :user
+  has_one :mastodon, -> { where(provider: 'mastodon') }, class_name: 'Authorization', inverse_of: :user
 
   attr_accessor :relative_account_id, :following
 

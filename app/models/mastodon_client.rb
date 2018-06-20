@@ -4,7 +4,7 @@ class MastodonClient < ApplicationRecord
   class << self
     def obtain!(domain, callback_url)
       new_client = Mastodon::REST::Client.new(base_url: "https://#{domain}").create_app('Mastodon Bridge', callback_url, 'read follow')
-      client     = self.new(domain: domain)
+      client     = new(domain: domain)
 
       client.client_id     = new_client.client_id
       client.client_secret = new_client.client_secret
@@ -17,11 +17,13 @@ class MastodonClient < ApplicationRecord
   def client_token
     return attributes['client_token'] if attributes['client_token'].present?
 
-    res = http_client.post("https://#{domain}/oauth/token", params: {
+    params = {
       grant_type: 'client_credentials',
       client_id: client_id,
       client_secret: client_secret,
-    })
+    }
+
+    res = http_client.post("https://#{domain}/oauth/token", params: params)
 
     info = Oj.load(res.to_s, mode: :null)
 

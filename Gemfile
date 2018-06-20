@@ -29,8 +29,9 @@ gem 'oj'
 gem 'react_on_rails', '11.0.0'
 
 group :development, :test do
-  gem 'pry-rails', '~> 0.3'
   gem 'i18n-tasks', '~> 0.9', require: false
+  gem 'pry-rails', '~> 0.3'
+  gem 'rubocop', '~> 0.57', require: false
 end
 
 group :development do

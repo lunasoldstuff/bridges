@@ -24,6 +24,6 @@ class UserSerializer < ActiveModel::Serializer
   end
 
   def avatar_url
-    object.mastodon.info['avatar'] unless object.mastodon.info['avatar'].blank?
+    object.mastodon.info['avatar'].presence
   end
 end

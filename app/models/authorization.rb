@@ -13,13 +13,14 @@ class Authorization < ApplicationRecord
   def info
     return @info if defined?(@info)
 
-    if provider == 'mastodon'
-      @info  = Rails.cache.fetch("mastodon-user:#{uid}", expires_in: 1.day) do
-        client = Mastodon::REST::Client.new(base_url: "https://#{domain}", bearer_token: token)
-        client.verify_credentials.attributes
-      end
-    else
+    if provider != 'mastodon'
       @info = {}
+      return
+    end
+
+    @info = Rails.cache.fetch("mastodon-user:#{uid}", expires_in: 1.day) do
+      client = Mastodon::REST::Client.new(base_url: "https://#{domain}", bearer_token: token)
+      client.verify_credentials.attributes
     end
   rescue Mastodon::Error, HTTP::Error, OpenSSL::SSL::SSLError, Oj::ParseError, NoMethodError
     @info = {}
