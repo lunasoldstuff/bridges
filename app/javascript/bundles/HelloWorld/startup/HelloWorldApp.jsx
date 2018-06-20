@@ -21,7 +21,7 @@ const messages = translations[locale] || translations[defaultLocale];
 // See documentation for https://github.com/reactjs/react-redux.
 // This is how you get props from the Rails view into the redux store.
 // This code here binds your smart component to the redux store.
-const HelloWorldApp = (props) => (
+const HelloWorldApp = props => (
   <IntlProvider locale={locale} messages={messages}>
     <Provider store={configureStore(props)}>
       <HelloWorldContainer />

@@ -5,7 +5,7 @@ import HelloWorld from '../components/HelloWorld';
 import * as actions from '../actions/finderActionCreators';
 
 // Which part of the Redux global state does our component want to receive as props?
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   ...state.finder,
   ...state.user,
 });
