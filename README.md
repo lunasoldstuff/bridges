@@ -4,5 +4,5 @@ This is a simple web app that helps you find your Twitter friends on the federat
 
 ## Links
 
-- [Ruby gem for Mastodon API](https://github.com/Gargron/mastodon-api)
-- [OmniAuth strategy for Mastodon](https://github.com/Gargron/omniauth-mastodon)
+- [Ruby gem for Mastodon API](https://github.com/tootsuite/mastodon-api)
+- [OmniAuth strategy for Mastodon](https://github.com/tootsuite/omniauth-mastodon)
