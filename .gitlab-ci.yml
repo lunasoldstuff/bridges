@@ -1,0 +1,57 @@
+image: circleci/ruby:2.5.1-stretch-node
+
+.default-cache: &default-cache
+  paths:
+    - ./.yarn-cache/
+    - ./node_modules/
+    - ./vendor/bundle/
+
+variables:
+  RAILS_ENV: test
+  NODE_ENV: test
+
+stages:
+  - prepare
+  - build
+  - review
+
+before_script:
+    - bundle install --clean --deployment --jobs 4 --retry 3 --without development production
+    - yarn install --frozen-lockfile --cache-folder ./.yarn-cache/
+
+setup-test-env:
+  stage: prepare
+  cache:
+    <<: *default-cache
+  script:
+    - ruby -v
+    - node -v
+
+rubocop:
+  stage: review
+  dependencies:
+    - setup-test-env
+  cache:
+    <<: *default-cache
+  script:
+    - bundle exec rubocop
+
+i18n-tasks:
+  stage: review
+  dependencies:
+    - setup-test-env
+  cache:
+    <<: *default-cache
+  script:
+    - bundle exec i18n-tasks check-normalized
+    - bundle exec i18n-tasks unused
+
+eslint:
+  stage: review
+  dependencies:
+    - setup-test-env
+  cache:
+    <<: *default-cache
+  script:
+    - ./bin/rails react_on_rails:locale
+    - yarn test:lint

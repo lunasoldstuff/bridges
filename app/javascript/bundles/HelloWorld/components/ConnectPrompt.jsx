@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import { FormattedMessage } from 'react-intl';
+import domainShape from '../types/domainShape';
 
 const ConnectPrompt = ({ isPioneer, domains }) => (
   <div className='connect-prompt'>
@@ -20,15 +21,13 @@ const ConnectPrompt = ({ isPioneer, domains }) => (
   </div>
 );
 
-ConnectPrompt.defaultProps = {
-  isPioneer: false,
-};
-
 ConnectPrompt.propTypes = {
   isPioneer: PropTypes.bool,
-  domains: PropTypes.arrayOf(PropTypes.shape({
-    uri: PropTypes.string,
-  })).isRequired,
+  domains: PropTypes.arrayOf(domainShape).isRequired,
+};
+
+ConnectPrompt.defaultProps = {
+  isPioneer: false,
 };
 
 export default ConnectPrompt;

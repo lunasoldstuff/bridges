@@ -10,6 +10,18 @@ module.exports = {
   },
   rules: {
     'jsx-quotes': ['error', 'prefer-single'],
+    'max-len': [
+      'error',
+      256,
+      2,
+      {
+        ignoreUrls: true,
+        ignoreComments: false,
+        ignoreRegExpLiterals: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+      },
+    ],
     'no-multi-spaces': [
       'error',
       {
@@ -17,6 +29,14 @@ module.exports = {
         exceptions: {
           VariableDeclarator: true,
         },
+      },
+    ],
+    'space-before-function-paren': [
+      'error',
+      {
+        anonymous: 'always',
+        named: 'always',
+        asyncArrow: 'always',
       },
     ],
   },
