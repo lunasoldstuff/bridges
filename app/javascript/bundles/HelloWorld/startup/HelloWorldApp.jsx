@@ -1,8 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { IntlProvider, addLocaleData } from 'react-intl';
-import en from 'react-intl/locale-data/en';
+import ar from 'react-intl/locale-data/ar'
 import de from 'react-intl/locale-data/de';
+import en from 'react-intl/locale-data/en';
 import ja from 'react-intl/locale-data/ja';
 import { defaultLocale } from '../../../locales/default';
 import { translations } from '../../../locales/translations';
@@ -10,8 +11,9 @@ import configureStore from '../store/helloWorldStore';
 import HelloWorldContainer from '../containers/HelloWorldContainer';
 
 addLocaleData([
-  ...en,
+  ...ar,
   ...de,
+  ...en,
   ...ja,
 ]);
 
