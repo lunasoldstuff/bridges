@@ -1,3 +1,4 @@
+---
 ar:
   accounts:
     show:
@@ -10,23 +11,16 @@ ar:
       connect_mastodon: إقران ماستدون
       connect_twitter: إقران تويتر
       connected: مُتصل
-      description: يستخدم هذا الموقع قاعدة بيانات مستخدمي تويتر و مستخدمي ماستدون
-        الذين قاموا بتسجيل دخولهم هنا قصد مقارنة الحسابات و مطابقتها مع مثيلات خوادم
-        ماستدون. هل أصدقاؤك مِن بينهم ؟
+      description: يستخدم هذا الموقع قاعدة بيانات مستخدمي تويتر و مستخدمي ماستدون الذين قاموا بتسجيل دخولهم هنا قصد مقارنة الحسابات و مطابقتها مع مثيلات خوادم ماستدون. هل أصدقاؤك مِن بينهم ؟
       heading:
         description: التسجيل عبر تويتر للمواصلة
         title: إبحث عن أصدقائك على ماستدون
   layouts:
     application:
       account: الحساب
-      footer_html: 'هذا الموقع يُديرُه  <a href="https://mastodon.social/@Mastodon"
-        target="_blank">@Mastodon@mastodon.social</a> / <a href="https://twitter.com/MastodonProject"
-        target="_blank">@MastodonProject</a>.<br />
-
-        <a href="https://source.joinmastodon.org/mastodon/bridge" target="_blank">الشفرة
-        المصدرية</a>
-
-        '
+      footer_html: |
+        هذا الموقع يُديرُه  <a href="https://mastodon.social/@Mastodon" target="_blank">@Mastodon@mastodon.social</a> / <a href="https://twitter.com/MastodonProject" target="_blank">@MastodonProject</a>.<br />
+        <a href="https://source.joinmastodon.org/mastodon/bridge" target="_blank">الشفرة المصدرية</a>
       friends: الأصدقاء
       logout: خروج
       title: إبحث عن أصدقائك في تويتر على ماستدون - جسر ماستدون
