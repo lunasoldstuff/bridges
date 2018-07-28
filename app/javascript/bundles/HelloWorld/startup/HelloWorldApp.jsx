@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { IntlProvider, addLocaleData } from 'react-intl';
-import ar from 'react-intl/locale-data/ar'
+import ar from 'react-intl/locale-data/ar';
 import de from 'react-intl/locale-data/de';
 import en from 'react-intl/locale-data/en';
 import ja from 'react-intl/locale-data/ja';
