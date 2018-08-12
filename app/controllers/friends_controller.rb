@@ -28,9 +28,9 @@ class FriendsController < ApplicationController
 
   def follow_all
     if Sidekiq::Status.complete?(job_id)
-      friends = self.friends
+      loaded_friends = friends
 
-      friends.each do |friend|
+      loaded_friends.each do |friend|
         next if friend.relative_account_id.blank? || friend.following
 
         begin
@@ -41,7 +41,7 @@ class FriendsController < ApplicationController
         end
       end
 
-      Rails.cache.write("#{current_user.id}/friends", friends.map { |f| [f.id, f.relative_account_id, f.following] })
+      Rails.cache.write("#{current_user.id}/friends", loaded_friends.map { |f| [f.id, f.relative_account_id, f.following] })
     end
 
     redirect_to friends_path

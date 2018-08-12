@@ -9,11 +9,11 @@ class UserSerializer < ActiveModel::Serializer
   end
 
   def mastodon_username
-    object.mastodon.uid
+    object.mastodon&.uid || ''
   end
 
   def twitter_username
-    object.twitter.display_name
+    object.twitter&.display_name || ''
   end
 
   def display_name
