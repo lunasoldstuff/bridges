@@ -21,4 +21,5 @@ de:
       subheadline: Bitte warte, während nach deinen Twitter-Freunden gesucht wird
     subheadline: 'Hier sind deine Twitter-Freunde, welche auf Mastodon sind:'
     your_friends_instance:
-      headline: Die Instanze deiner Freunde
+      headline: Die Instanzen deiner Freunde
+      subheadline: 'Diese Server benutzen deine Freunde:'
