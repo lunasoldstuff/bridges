@@ -5,6 +5,7 @@ import ar from 'react-intl/locale-data/ar';
 import de from 'react-intl/locale-data/de';
 import en from 'react-intl/locale-data/en';
 import ja from 'react-intl/locale-data/ja';
+import pl from 'react-intl/locale-data/pl';
 import { defaultLocale } from '../../../locales/default';
 import { translations } from '../../../locales/translations';
 import configureStore from '../store/helloWorldStore';
@@ -15,6 +16,7 @@ addLocaleData([
   ...de,
   ...en,
   ...ja,
+  ...pl,
 ]);
 
 const locale   = document.documentElement.lang || defaultLocale;

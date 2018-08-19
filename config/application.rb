@@ -29,6 +29,7 @@ module MastodonBridge
       :ar,
       :de,
       :ja,
+      :pl,
     ]
 
     config.active_job.queue_adapter = :sidekiq

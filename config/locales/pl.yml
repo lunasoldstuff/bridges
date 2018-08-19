@@ -1,0 +1,26 @@
+---
+pl:
+  accounts:
+    show:
+      disconnect: Rozłącz
+      heading:
+        description: Zarządzaj połączonymi kontami
+        title: Połączenia
+  home:
+    index:
+      connect_mastodon: Połącz z Mastodonem
+      connect_twitter: Połącz z Twitterem
+      connected: połączono
+      description: Ta strona korzysta z bazy danych użytkowników Twittera i użytkowników Mastodona, którzy zalogowali się tutaj, aby pomóc w znalezieniu ich pomiędzy wieloma instancjami Mastodona. Czy Twoi znajomi są wśród nich?
+      heading:
+        description: Zaloguj się z użyciem Twittera, aby rozpocząć
+        title: Znajdź swoich znajomych na Mastodonie
+  layouts:
+    application:
+      account: Konto
+      footer_html: |
+        Ta strona jest uruchamiana przez <a href="https://mastodon.social/@Mastodon" target="_blank">@Mastodon@mastodon.social</a> / <a href="https://twitter.com/MastodonProject" target="_blank">@MastodonProject</a>.<br />
+        <a href="https://source.joinmastodon.org/mastodon/bridge" target="_blank">Kod źródłowy</a>
+      friends: Znajomi
+      logout: Wyloguj się
+      title: Znajdź znajomych z Twittera na Mastodonie - Mastodon Bridge

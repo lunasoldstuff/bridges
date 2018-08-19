@@ -1,0 +1,25 @@
+---
+pl:
+  connect_prompt:
+    create_mastodon_account: Utwórz konto na Mastodonie
+    login_via_mastodon: Zaloguj się przez Mastodona
+    pioneer:
+      body: Możesz być pierwszy(-a) z Twoich znajomych na Twitterze, którzy odkryli Mastodona. Pamiętaj, aby połączyć konto na Mastodonie, aby mogli Cię tu znaleźć, gdy też dołączą.
+      title: Jesteś pionierem!
+    tutorial:
+      body: Aby Twoi znajomi również mogli Cię odnaleźć, musisz zalogować się przez Mastodona. Jeżeli potrzebujesz pomocy z wyborem serwera, {link} lub naciśnij poniższy przycisk.
+      link: zobacz, gdzie zarejestrowali się Twoi znajomi
+      title: Już prawie!
+  friends:
+    empty: Brak wyników… Może Twoi znajomi nie skorzystali jeszcze z tego narzędzia! A może to Ty ustalasz trendy!
+    find_more: Znajdź więcej na
+    follow_all: Śledź wszystkich znajomych na Mastodonie
+    headline: Twoi znajomi
+    num_users: "{formatted_count} {count, plural, one {osoba} few {osoby} other {osób}}"
+    searching:
+      headline: Wyszukiwanie Twoich znajomych…
+      subheadline: Poczekaj, aż znajdziemy Twoich znajomych z Twittera
+    subheadline: 'Oto Twoi znajomi z Twittera używający Mastodona:'
+    your_friends_instance:
+      headline: Instancje Twoich znajomych
+      subheadline: 'Tych serwerów używają Twoi znajomi:'
